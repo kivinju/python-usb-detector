@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ssd detector</title>
+</head>
+<body>
+    <div class="container" id="ssd">
+    </div>
+
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.5/socket.io.min.js"></script>
+
+    <script type="text/javascript" charset="utf-8">
+        namespace = '/vehicle';
+        var socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port + namespace);
+
+        socket.on('ssd', function (msg) {
+            var newmsg = $('#ssd').html() + msg + "<br />";
+            $('#ssd').html(newmsg);
+        });
+    </script>
+</body>
+</html>
